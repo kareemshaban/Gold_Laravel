@@ -329,7 +329,7 @@ return [
     'currency_ar' => 'إسم العملة عربي',
     'currency_en' => 'إسم العملة انجليزي',
     'currency_label' => 'رمز العملة',
-    'currency_label_en' => 'رمز العملة انجليزي'
-
+    'currency_label_en' => 'رمز العملة انجليزي',
+    'return_purchasedOld' => 'مردود شراء كسر'
 
 ];

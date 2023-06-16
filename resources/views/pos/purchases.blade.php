@@ -87,13 +87,27 @@
                                             <td class="text-center">{{$bill -> tax}}</td>
                                             <td class="text-center">{{$bill -> remain_money}}</td>
                                             <td class="text-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                            id="dropdownMenuButton" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                        Actions
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                       
+                                                            <a href="{{route('oldEntryPreview' , $bill -> id)}}" class="dropdown-item" > {{__('main.preview')}} </a>
+                                                            @if($bill -> returned_bill_id == 0 && $bill -> net_money > 0)
+                                                            <a class="dropdown-item" href="{{route('return_purchasedOld' , $bill -> id)}}">{{__('main.return_bill')}}</a>
+                                                        @endif
+                                                    </div>
+                                                </div>
 
-                                                <a href="{{route('oldEntryPreview' , $bill -> id)}}">
+                                                {{-- <a href="{{route('oldEntryPreview' , $bill -> id)}}">
                                                     <button type="button" class="btn btn-labeled btn-warning editBtn"
                                                             value="{{$bill -> id}}">
                                                     <span class="btn-label" style="margin-right: 10px;"><i
                                                             class="fa fa-eye"></i></span>{{__('main.preview')}}</button>
-                                                </a>
+                                                </a> --}}
 
 
                                             </td>

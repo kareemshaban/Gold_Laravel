@@ -507,6 +507,39 @@ class PosController extends WarehouseController
       //  return $bill ;
         return view ('pos.workReturn' , compact('routes' , 'bill' , 'details'));
     }
+    public function return_purchasedOld($id){
+        $roles = DB::table('role_views')
+            -> join('views' , 'role_views.view_id' , '=' , 'views.id')
+            ->join('roles' , 'role_views.role_id' , '=' , 'roles.id')
+            ->select('role_views.*' , 'views.name_ar as view_name_ar' ,  'views.name_en as view_name_en' ,
+                'roles.name_ar as role_name_ar' ,  'roles.name_en as role_name_en' , 'views.route')
+            ->where('role_views.role_id' , '=' , Auth::user() -> role_id)
+            ->where('role_views.all_auth' , '=' , 1)
+            -> get();
+
+
+        $routes = [] ;
+        foreach ($roles as $role){
+            array_push($routes , $role -> route);
+        }
+
+        $bill = DB::table('enter_olds')
+            -> leftJoin('companies' , 'companies.id' , '=' , 'enter_olds.client_id')
+            -> select('enter_olds.*' , 'companies.name as vendor_name' , 'companies.vat_no as vendor_vat_no')
+            -> where('enter_olds.id' , '=' , $id)
+            -> get() -> first();
+
+
+        $details   =  DB::table('enter_old_details')
+            -> join('karats' , 'karats.id' , '=' , 'enter_old_details.karat_id')
+            -> select('enter_old_details.*' , 'karats.name_ar as karat_ar' , 'karats.name_en as karat_en' , 'karats.transform_factor as transform_factor')
+            -> where('enter_old_details.bill_id' , '=' , $id)
+            -> get();
+
+
+      // return $details ;
+        return view ('pos.returnOldPurchased' , compact('routes' , 'bill' , 'details'));
+    }
 
     public function return_work_post(Request $request){
         $bill = ExitWork::find($request -> bill_id);

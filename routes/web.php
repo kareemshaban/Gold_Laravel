@@ -170,6 +170,7 @@ Route::group(
     Route::get('/return_work/{id}', [App\Http\Controllers\PosController::class, 'return_work'])->name('return_work');
     Route::post('/return_work_post', [App\Http\Controllers\PosController::class, 'return_work_post'])->name('return_work_post');
     Route::get('/return_sales', [App\Http\Controllers\PosController::class, 'return_sales'])->name('return_sales');
+    Route::get('/return_purchasedOld/{id}', [App\Http\Controllers\PosController::class, 'return_purchasedOld'])->name('return_purchasedOld');
 
 
     Route::post('/store_pos_purchase', [App\Http\Controllers\PosController::class, 'store_pos_purchase'])->name('store_pos_purchase');

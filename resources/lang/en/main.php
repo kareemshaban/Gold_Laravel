@@ -324,5 +324,6 @@ return [
     'currency_ar' => 'Currency AR',
     'currency_en' => 'Currency EN',
     'currency_label' => 'Currency Label AR',
-    'currency_label_en' => 'Currency Label EN'
+    'currency_label_en' => 'Currency Label EN',
+    'return_purchasedOld' => 'Return Old Gold'
 ];

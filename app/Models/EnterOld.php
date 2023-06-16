@@ -24,6 +24,7 @@ class EnterOld extends Model
         'discount',
         'net_money',
         'pos',
-        'tax'
+        'tax',
+        'returned_bill_id'
     ];
 }
